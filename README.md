@@ -44,9 +44,9 @@ Columns description:
 
 |Column|Description|Unit|
 |------|-----------|----|
-| 	1... 266| Mass loss rate at $\beta_1$ 			| s^-1 |
-| 267... 532| Mass loss rate at $\beta_2$ 			| s^-1 | 
-| 533... 798| Mass loss rate at $\beta_3$ 			| s^-1 |
+| 	1...266| Mass loss rate at $\beta_1$ 			| s^-1 |
+| 267...532| Mass loss rate at $\beta_2$ 			| s^-1 | 
+| 533...798| Mass loss rate at $\beta_3$ 			| s^-1 |
 | 799...1064| Mass loss rate at $\beta_4$ 			| s^-1 |
 
 Corresponding $T$ is 20...550 with $\Delta T=2K$
