@@ -8,6 +8,30 @@ Scripts to generate the data sets used to train the models
 - Multiprocessor
 - Examples available at [1].
 
+Paramaters that need can be changed by the user
+
+|Parameter|Description|Default value|
+|---------|------------------------------------------------------|-------------|
+| i		  |number of elements that will be generated             | 6400000     |
+| cores   |number of cores used for generation                   | 128         |
+| rrlimlow|lower boundary of peak reaction rate sampling (in /s) |0.001 s^-1   |
+| rrlimup |upper boundary of peak reaction rate sampling (in /s) |0.01 s^-1    |
+| rtlimlow|lower boundary of peak reaction rate sampling (in °C) | 100 °C      |
+| rtlimup |upper boundary of peak reaction rate sampling (in °C) | 500 °C      |
+| Tstart  |Start temperature of experiment (in °C)               |  20 °C      |
+| Tend    |End temperature of experiment (in °C)                 | 550 °C      |
+
+Standard output will be the mass loss rate for four TGA experiments as following:
+
+|Heating rate|Heating rate value|Time step $\Delta t$|Temperature step $\Delta T$|
+|------|------------|---------|----------------|
+|$\beta_1$     | 5 K/min	| 24 s	  | 2 K			   |
+|$\beta_2$	   |10 K/min	| 12 s	  | 2 K			   |
+|$\beta_3$	   |30 K/min    |  4 s    | 2 K			   |
+|$\beta_4$     |40 K/min    |  3 s	  | 2 K			   |
+
+
+
 The output of the scripts are as following. Description of the data structure is below.
 
 |Filename | Description |
