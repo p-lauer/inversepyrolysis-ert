@@ -1,27 +1,27 @@
 # Inverse modelling pyrolization kinetics with ensemble learning methods - scripts
 ## ./generate_db/
 
-Scripts to generate the data sets used to train the models
+The scripts `generate_1c.py`, `generate_2c.py` and `generate_3c.py` are used to generate the training data for the model. There is an individual script for 1, 2 and three components. The reaction kinetic parameters and component fractions are sampled randomly and then the mass loss rate for TGA experiments with four different constant heating rates are calculated.
 
 - Parameters to set
 - Output files
 - Multiprocessor
-- Examples available at [1].
+Examples are available for downlaod[1].
 
-Paramaters that need can be changed by the user
+Paramaters that need can be set by the user
 
 |Parameter|Description|Default value|
-|---------|------------------------------------------------------|-------------|
-| i		  |number of elements that will be generated             | 6400000     |
-| cores   |number of cores used for generation                   | 128         |
-| rrlimlow|lower boundary of peak reaction rate sampling (in /s) |0.001 s^-1   |
-| rrlimup |upper boundary of peak reaction rate sampling (in /s) |0.01 s^-1    |
-| rtlimlow|lower boundary of peak reaction rate sampling (in °C) | 100 °C      |
-| rtlimup |upper boundary of peak reaction rate sampling (in °C) | 500 °C      |
-| Tstart  |Start temperature of experiment (in °C)               |  20 °C      |
-| Tend    |End temperature of experiment (in °C)                 | 550 °C      |
+|---------|------------------------------------------------------|----------|
+| i		  |number of elements that will be generated             | 6400000  |
+| cores   |number of CPU cores used for generation                   | 128      |
+| rrlimlow|lower boundary of peak reaction rate sampling (in /s) | 0.001    |
+| rrlimup |upper boundary of peak reaction rate sampling (in /s) | 0.01     |
+| rtlimlow|lower boundary of peak reaction rate sampling (in °C) | 100      |
+| rtlimup |upper boundary of peak reaction rate sampling (in °C) | 500      |
+| Tstart  |Start temperature of experiment (in °C)               |  20      |
+| Tend    |End temperature of experiment (in °C)                 | 550      |
 
-Standard output will be the mass loss rate for four TGA experiments as following:
+Standard output will be the mass loss rate for four TGA experiments with following configuration:
 
 |Heating rate|Heating rate value|Time step $\Delta t$|Temperature step $\Delta T$|
 |------|------------|---------|----------------|
@@ -30,15 +30,13 @@ Standard output will be the mass loss rate for four TGA experiments as following
 |$\beta_3$	   |30 K/min    |  4 s    | 2 K			   |
 |$\beta_4$     |40 K/min    |  3 s	  | 2 K			   |
 
-
-
-The output of the scripts are as following. Description of the data structure is below.
+The scripts will generate numbered files named `features*` and `labels*` individually for each used CPU core. In addition there is a `labels*` file that holds all generated labels. The naming convention can be seen in the table below and a description of the data structure in the files can be found under [Data structure](#data-structure) below.
 
 |Filename | Description |
 |---------|-------------|
 |labels{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}.csv 				|generated labels  |
-|features{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}_{$i_{cores}$}.csv |generated labels, output per core |
-|labels{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}_{$i_{cores}$}.csv 	|generated labels, output per core  |
+|features{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}_{$i_{core}$}.csv |generated labels, output per core |
+|labels{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}_{$i_{core}$}.csv 	|generated labels, output per core  |
 
 ## ./build/
 
@@ -48,11 +46,13 @@ Scripts to generate the individual sub models
 
 Script to test the complete model
 
-## File structure
+## <a name="data-structure"></a> Data structure
 
-### labels*.csv
+### `labels*.csv`
 
 no Header
+
+The mass loss rates are calculated from the reaction kinetic parameters can be found at the same row number of the corresponding `features*` file.
 
 Columns description:
 
@@ -77,7 +77,9 @@ Columns description:
 |17|$Y_2$| Fraction of component 2						| 1	   |
 |18|$Y_3$| Fraction of component 3						| 1	   |
 
-### features*.csv
+### `features*.csv`
+
+The files do not have any header. There is a set of mass loss records for four TGA experiments with identical reaction kinetic parameters and four different heating rates per row. One row can be separated into the four experiments as shown in the following tabel. The mass loss rates are calculated from the reaction kinetic parameters in the same row number of the corresponding `labels*` file.
 
 |Column|Description|Unit|
 |------|-----------|----|
@@ -86,4 +88,4 @@ Columns description:
 | 533...798| Mass loss rate at $\beta_3$ 			| s^-1 |
 | 799...1064| Mass loss rate at $\beta_4$ 			| s^-1 |
 
-Corresponding $T$ is 20...550 with $\Delta T=2K$
+Corresponding $T$ is 20...550 with $\Delta T=2K$. Then, $t$ is $\frac{T}{\beta}$.
