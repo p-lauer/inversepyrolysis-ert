@@ -1,14 +1,9 @@
 # Inverse modelling pyrolization kinetics with ensemble learning methods - scripts
 ## ./generate_db/
 
-The scripts `generate_1c.py`, `generate_2c.py` and `generate_3c.py` are used to generate the training data for the model. There is an individual script for 1, 2 and three components. The reaction kinetic parameters and component fractions are sampled randomly and then the mass loss rate for TGA experiments with four different constant heating rates are calculated.
+The scripts `generate_1c.py`, `generate_2c.py` and `generate_3c.py` are used to generate the training data for the model. There is an individual script for 1, 2 and three components. The reaction kinetic parameters and component fractions are sampled randomly and then the mass loss rate for TGA experiments with four different constant heating rates are calculated. The scripts are intended to be used on multiple CPUs. Example data sets are available for download[[1]](1).
 
-- Parameters to set
-- Output files
-- Multiprocessor
-Examples are available for downlaod[1].
-
-Paramaters that need can be set by the user
+In the following table, there are paramaters listed that can easily set by the user. Further parameters, as heating rates and sampling rates can also be modified in the scripts but may need more caution.
 
 |Parameter|Description|Default value|
 |---------|------------------------------------------------------|----------|
