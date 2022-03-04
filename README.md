@@ -88,4 +88,4 @@ The files do not have any header. There is a set of mass loss records for four T
 | 533...798| Mass loss rate at $\beta_3$ 			| s^-1 |
 | 799...1064| Mass loss rate at $\beta_4$ 			| s^-1 |
 
-Corresponding $T$ is 20...550 with $\Delta T=2K$. Then, $t$ is $\frac{T}{\beta}$.
+Corresponding $T$ is 20...550 °C with $\Delta T=2K$. Then, $t$ is $\frac{T}{\beta}$.
