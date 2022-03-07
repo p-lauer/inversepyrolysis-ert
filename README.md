@@ -33,9 +33,22 @@ The scripts will generate numbered files named `features*` and `labels*` individ
 |features{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}_{$i_{core}$}.csv |generated labels, output per core |
 |labels{$N_u$/1000}k_{$\beta_1$}_{$\beta_2$}_{$\beta_3$}_{$\beta_4$}_{$n$}_{$\Delta T$/s}_{$i_{core}$}.csv 	|generated labels, output per core  |
 
-## ./build/
+## ./build_models/
 
-Scripts to generate the individual sub models
+These scripts generate the individual sub models as described in the following table.
+
+|Filename   |Output               | Description          |
+|-----------|---------------------|----------------------|
+|`sm1.py`   |`sm1.pickle`    | Sub model 1 (Classifier for estimation of number of components)|
+|`sm3_1c.py`|`sm3_1c.pickle`| Sub model 3 for materials with 1 component (Regressor for estimation of reaction kinetic parameters)|
+|`sm3_2c.py`|`sm3_2c.pickle`| Sub model 3 for materials with 2 components (Regressor for estimation of reaction kinetic parameters)|
+|`sm3_3c.py`|`sm3_3c.pickle`| Sub model 3 for materials with 3 components (Regressor for estimation of reaction kinetic parameters)|
+
+Default parameters are the ones used in the corresponding publication. A contemporary high performance system (128 CPU cores, 1 TB RAM) will be needed for this. However, the following hyper parameter values will produce models with slightly less accurate predictions but much less computational demand:
+
+|Parameter | Sub model 1 (`sm1.py`) | Sub model 3, 1 Component (`sm3_1c.py`) | Sub model 3, 2 components (`sm3_2c.py`)|Sub model 3, 3 components (`sm3_3c.py`)|
+|---|---|---|---|---|
+|
 
 ## ./test/
 
