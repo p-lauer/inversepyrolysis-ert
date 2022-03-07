@@ -98,7 +98,7 @@ print('Dataset loaded')
 
 for i in gridlist:
     print(
-        "case_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}".format(algorithm, samplesize / 1000, reactions, i[2], i[0], i[1], i[3]))
+        "sm1_case_{}_{}k_{}HR_{}est_{}sl_BS{}".format(algorithm, samplesize / 1000, i[2], i[0], i[1], i[3]))
     print(i)
     train_features = np.hstack(list(train_features_all[t] for t in i[2]))
     test_features = np.hstack(list(test_features_all[t] for t in i[2]))
@@ -116,10 +116,10 @@ for i in gridlist:
     print("Fitting time: ", (time.time() - currenttime) / 60, ' min')
     predictions = clf.predict(test_features)
     np.savetxt(
-        "test_labels_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2], i[0],
+        "sm1_test_labels_{}_{}k_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, i[2], i[0],
                                                                  i[1], i[3]), test_labels, delimiter=",")
     np.savetxt(
-        "test_predictions_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2],
+        "sm1_test_predictions_{}_{}k_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, i[2],
                                                                       i[0], i[1], i[3]), predictions, delimiter=",")
     print("R2 score: {}".format(r2_score(test_labels, predictions)))
     print("MSE: {}".format(mean_squared_error(test_labels, predictions)))
