@@ -1,7 +1,7 @@
 # Inverse modelling pyrolization kinetics with ensemble learning methods - scripts
 ## ./generate_db/
 
-The scripts `generate_1c.py`, `generate_2c.py` and `generate_3c.py` are used to generate the training data for the model. There is an individual script for 1, 2 and three components. The reaction kinetic parameters and component fractions are sampled randomly and then the mass loss rate for TGA experiments with four different constant heating rates are calculated. The scripts are intended to be used on multiple CPUs. Example data sets are available for download[[1]](1).
+The scripts `generate_1c.py`, `generate_2c.py` and `generate_3c.py` are used to generate the training data for the model. There is an individual script for 1, 2 and 3 components. The reaction kinetic parameters and component fractions are sampled randomly and then the mass loss rate for TGA experiments with four different constant heating rates are calculated. The scripts are intended to be used on multiple CPUs. Example data sets are available for download [[1]].
 
 In the following table, there are paramaters listed that can easily set by the user. Further parameters, as heating rates and sampling rates can also be modified in the scripts but may need more caution.
 
@@ -44,11 +44,12 @@ These scripts generate the individual sub models as described in the following t
 |`sm3_2c.py`|`sm3_2c.pickle`| Sub model 3 for materials with 2 components (Regressor for estimation of reaction kinetic parameters)|
 |`sm3_3c.py`|`sm3_3c.pickle`| Sub model 3 for materials with 3 components (Regressor for estimation of reaction kinetic parameters)|
 
-Default parameters are the ones used in the corresponding publication. A contemporary high performance system (128 CPU cores, 1 TB RAM) will be needed for this. However, the following hyper parameter values will produce models with slightly less accurate predictions but much less computational demand:
+Default parameters are the ones used in the corresponding publication. A contemporary high performance system (128 CPU cores, 1 TB RAM) will be needed for this. However, the following hyper parameter values shall be taken as lower limits to produce models with slightly less accurate predictions but much less computational demand:
 
 |Parameter | Sub model 1 (`sm1.py`) | Sub model 3, 1 Component (`sm3_1c.py`) | Sub model 3, 2 components (`sm3_2c.py`)|Sub model 3, 3 components (`sm3_3c.py`)|
 |---|---|---|---|---|
-|
+|Number of estimators|500|1|50|50|
+|Maximum tree depth|100|50|50|50|50|
 
 ## ./test/
 
@@ -97,3 +98,5 @@ The files do not have any header. There is a set of mass loss records for four T
 | 799...1064| Mass loss rate at $\beta_4$ 			| s^-1 |
 
 Corresponding $T$ is 20...550 °C with $\Delta T=2K$. Then, $t$ is $\frac{T}{\beta}$.
+
+[1]: https://doi.org/10.5281/zenodo.6337389
