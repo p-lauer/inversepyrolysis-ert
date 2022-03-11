@@ -115,12 +115,12 @@ for i in gridlist:
     out_file.close()
     print("Fitting time: ", (time.time() - currenttime) / 60, ' min')
     predictions = clf.predict(test_features)
-    np.savetxt(
-        "sm1_test_labels_{}_{}k_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, i[2], i[0],
-                                                                 i[1], i[3]), test_labels, delimiter=",")
-    np.savetxt(
-        "sm1_test_predictions_{}_{}k_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, i[2],
-                                                                      i[0], i[1], i[3]), predictions, delimiter=",")
+    #np.savetxt(
+    #    "sm1_test_labels_{}_{}k_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, i[2], i[0],
+    #                                                             i[1], i[3]), test_labels, delimiter=",")
+    #np.savetxt(
+    #    "sm1_test_predictions_{}_{}k_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, i[2],
+    #                                                                  i[0], i[1], i[3]), predictions, delimiter=",")
     print("R2 score: {}".format(r2_score(test_labels, predictions)))
     print("MSE: {}".format(mean_squared_error(test_labels, predictions)))
     print('Total time: {}'.format(time.time() - currenttime))

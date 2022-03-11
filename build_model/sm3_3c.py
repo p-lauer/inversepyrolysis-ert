@@ -102,23 +102,21 @@ for i in gridlist:
     counter += 1
     currenttime = time.time()
     clf.fit(train_features, train_labels);
-    out_file = open(
-        'case_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.pickle'.format(algorithm, samplesize / 1000, reactions, i[2], i[0], i[1],
-                                                             i[3]), 'wb')
+    out_file = open('sm3_3r.pickle', 'wb')
     pickle.dump(clf, out_file)
     out_file.close()
     print("Fitting time: ", (time.time() - currenttime) / 60, ' min')
     predictions = clf.predict(test_features)
-    np.savetxt(
-        "test_labels_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2], i[0],
-                                                                 i[1], i[3]), test_labels, delimiter=",")
-    np.savetxt(
-        "test_predictions_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2],
-                                                                      i[0], i[1], i[3]), predictions, delimiter=",")
-    np.savetxt(
-        "fractions_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2], i[0],
-                                                               i[1], i[3]), test_features[:, -reactions:],
-        delimiter=",")
+    #np.savetxt(
+    #    "test_labels_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2], i[0],
+    #                                                             i[1], i[3]), test_labels, delimiter=",")
+    #np.savetxt(
+    #    "test_predictions_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2],
+    #                                                                  i[0], i[1], i[3]), predictions, delimiter=",")
+    #np.savetxt(
+    #    "fractions_{}_{}k_{}r_{}HR_{}est_{}sl_BS{}.csv".format(algorithm, samplesize / 1000, reactions, i[2], i[0],
+    #                                                           i[1], i[3]), test_features[:, -reactions:],
+    #    delimiter=",")
     print("R2 score: {}".format(r2_score(test_labels, predictions)))
     print("MSE: {}".format(mean_squared_error(test_labels, predictions)))
     print('Total time: {}'.format(time.time() - currenttime))
