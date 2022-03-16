@@ -40,7 +40,7 @@ gridlist = list(itertools.product(estimators, max_depth, hrrlist, bootstrap))
 currenttime = time.time()
 print(str(head))
 
-print('Loading Dataset....')
+print('Loading dataset')
 
 for i in range(120):
     feat = "../generate_db/features6400k_5_10_30_40_1r_2ks_" + str(i) + ".csv"
