@@ -1,6 +1,6 @@
 # Inverse modelling pyrolization kinetics with ensemble learning methods - scripts
 
-These scripts can be used to reproduce the study described in the article "Inverse modelling pyrolization kinetics with ensemble learning methods"[[1]]. The scripts here are intended to be used with default configuration, if not noted otherwise. To apply this model to your own data, you can adopt the scripts shown in ./test_model/.
+These scripts can be used to reproduce the study described in the article "Inverse modelling pyrolization kinetics with ensemble learning methods" [[1]]. The scripts here are intended to be used with default configuration, if not noted otherwise. To apply this model to your own data, you can adopt the scripts shown in ./test_model/.
 
 ## ./generate_db/
 
@@ -106,7 +106,7 @@ Corresponding $T$ is 20...550 °C with $\Delta T=2K$. Then, $t$ is $\frac{T}{\be
 
 ### `sm1.pickle`
 
-The file holds a single python element of class `sklearn.ensemble.ExtraTreesClassifier`[[4]]. It is pre trained to estimate the number of components with single reactions represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
+The file holds a single python element of class `sklearn.ensemble.ExtraTreesClassifier` [[4]]. It is pre trained to estimate the number of components with single reactions represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
 
 Using `sm1.predict(X)` expects 1064 features as input with following properties:
 
@@ -125,7 +125,7 @@ Output is a single integer of 1,2 or 3 as the number of components in the materi
 
 ### `sm3_1r.pickle`
 
-The file holds a single python element of class `sklearn.ensemble.ExtraTreesRegressor`[[6]]. It is pre trained to estimate the reaction kinetic parameters of materials consisting of one component represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
+The file holds a single python element of class `sklearn.ensemble.ExtraTreesRegressor` [[6]]. It is pre trained to estimate the reaction kinetic parameters of materials consisting of one component represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
 
 Using `sm3_1r.predict(X)` expects 1067 features as input with following properties:
 
@@ -146,7 +146,7 @@ Output is $log(A_1)$ and $E_1$.
 
 ### `sm3_2r.pickle`
 
-The file holds a single python element of class `sklearn.ensemble.ExtraTreesRegressor`[[6]]. It is pre trained to estimate the reaction kinetic parameters of materials consisting of two components represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
+The file holds a single python element of class `sklearn.ensemble.ExtraTreesRegressor` [[6]]. It is pre trained to estimate the reaction kinetic parameters of materials consisting of two components represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
 
 Using `sm3_2r.predict(X)` expects 1067 features as input with following properties:
 
@@ -166,7 +166,7 @@ Output is $log(A_1)$, $log(A_2)$, $E_1$ and $E_2$.
 
 ### `sm3_3r.pickle`
 
-The file holds a single python element of class `sklearn.ensemble.ExtraTreesRegressor`[[6]]. It is pre trained to estimate the reaction kinetic parameters of materials consisting of three components represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
+The file holds a single python element of class `sklearn.ensemble.ExtraTreesRegressor` [[6]]. It is pre trained to estimate the reaction kinetic parameters of materials consisting of three components represented by input mass loss rate data. It can be loaded via pickle[[5]] into Python.
 
 Using `sm3_3r.predict(X)` expects 1067 features as input with following properties:
 
@@ -206,4 +206,3 @@ This is the columns description of the output from `calculate.py`. The file has 
 [4]: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html
 [5]: https://docs.python.org/3/library/pickle.html
 [6]: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html#sklearn.ensemble.ExtraTreesRegressor
-[5]: aa

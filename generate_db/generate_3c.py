@@ -53,7 +53,7 @@ def generate(dataset,nr):
         temp3,masslossrate3,massloss3=calculate_reaction(each[3],each[4],each[2],HR=30., dt=4,T0=Tstart, T1=Tend)
         each=each1.copy()
         temp4,masslossrate4,massloss4=calculate_reaction(each[3],each[4],each[2],HR=40., dt=3,T0=Tstart, T1=Tend)
-       feat.append((temp1,temp2,temp3,temp4,masslossrate1,masslossrate2,masslossrate3,masslossrate4,massloss1,massloss2,massloss3,massloss4))
+        feat.append((temp1,temp2,temp3,temp4,masslossrate1,masslossrate2,masslossrate3,masslossrate4,massloss1,massloss2,massloss3,massloss4))
     scale=len(temp1)
     feat=np.array(feat)
     print('{} done'.format(int(nr)))
