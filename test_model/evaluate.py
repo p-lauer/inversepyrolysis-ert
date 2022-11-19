@@ -15,7 +15,7 @@ import itertools
 
 def convert_tga_to_rk(rr, rt, hr, Y=1):
     # [rr]=/s,[rt]=°C,[hr]=K/min, [E]=J/mol, [A]=1/s
-    rt = rt + 273
+    rt = rt + 273.15
     hr = hr / 60
     E = (np.exp(1) * rr * 8.3145 * (rt ** 2)) / hr
     A = (np.exp(1) * rr * np.exp((E / (8.3145 * rt)), dtype=np.float128))
@@ -29,7 +29,7 @@ def reactionrate(A, E, y, T, n=1):
 
 def calculate_reaction(A, E, Ys, T0=20, T1=550, HR=5., dt=5):
     Y = Ys.copy()
-    T0, T1 = T0 + 273, T1 + 273
+    T0, T1 = T0 + 273.15, T1 + 273.15
     x = np.zeros(((int((T1 - T0) * (60. / (HR * dt)) + 1), 3)))
     x[:, 0] = np.linspace(T0, T1, int((T1 - T0) * (60. / (HR * dt)) + 1))
     for i in x:
@@ -45,7 +45,7 @@ def calculate_reaction(A, E, Ys, T0=20, T1=550, HR=5., dt=5):
                     r, Y[c] = 0, 0
         i[2] = sum(Y)
         i[1] = k
-    x[:, 0] = x[:, 0] - 273
+    x[:, 0] = x[:, 0] - 273.15
     return (x.T)
 
 
